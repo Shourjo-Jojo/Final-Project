@@ -1,0 +1,45 @@
+﻿@model SampleQuestionPaper.Models.Question_Table1
+
+@{
+    ViewBag.Title = "Add";
+    var data = ViewBag.SubjectType as List<SelectListItem>;
+}
+
+<div>
+    <h2 style="text-transform:uppercase; text-align:center;color:darkblue">Add Question</h2>
+</div>
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        <div class="row">
+            <label>Enter the Question</label><br />
+            @Html.EditorFor(m => m.Question)<br />
+            <label>Enter the Keyword of questions</label>
+            @Html.EditorFor(m => m.Keyword)<br />
+            <label>Enter the Subject Type</label>
+            @Html.DropDownListFor(m => m.SubjectType, data)<br />
+            <label>Option 1</label><br />
+            @Html.EditorFor(m => m.Option1)<br />
+            <label>Option 2</label><br />
+            @Html.EditorFor(m => m.Option2)<br />
+            <label>Option 3</label><br />
+            @Html.EditorFor(m => m.Option3)<br />
+            <label>Option 4</label><br />
+            @Html.EditorFor(m => m.Option4)<br />
+            <button class="btn btn-primary mt-3">Add Questions</button>
+        </div>
+    }
+</div>
+<style>
+    label{
+        font-weight:bold;
+        color:Highlight;
+    }
+    input{
+        text-align:center;
+    }
+    .btn-primary{
+        background-color:darkorchid;
+    }
+</style>
+

@@ -1,0 +1,25 @@
+Subject Command SQL
+
+CREATE TABLE [dbo].[Subject_Table] (
+    [subject_Id] INT           IDENTITY (1, 1) NOT NULL,
+    [Subject]    NVARCHAR (50) NOT NULL,
+    CONSTRAINT [PK_Table] PRIMARY KEY CLUSTERED ([subject_Id] ASC),
+    UNIQUE NONCLUSTERED ([subject_Id] ASC)
+);
+
+SQL Command QuestionTable
+
+
+CREATE TABLE [dbo].[Question_Table1] (
+    [QuestionId]  INT           IDENTITY (1, 1) NOT NULL,
+    [Question]    VARCHAR (MAX) NOT NULL,
+    [Keyword]     VARCHAR (MAX) NOT NULL,
+    [SubjectType] INT           NOT NULL,
+    [Option1]     VARCHAR (MAX) NULL,
+    [Option2]     VARCHAR (MAX) NULL,
+    [Option3]     VARCHAR (MAX) NULL,
+    [Option4]     VARCHAR (MAX) NULL,
+    PRIMARY KEY CLUSTERED ([QuestionId] ASC),
+    CONSTRAINT [FK_Question_Table1_Subject_Table] FOREIGN KEY ([SubjectType]) REFERENCES [dbo].[Subject_Table] ([subject_Id])
+);
+

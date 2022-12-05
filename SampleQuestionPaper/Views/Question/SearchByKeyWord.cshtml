@@ -1,0 +1,16 @@
+﻿@model List<SampleQuestionPaper.Models.Question_Table1>
+
+@{
+    ViewBag.Title = "SearchByKeyWord";
+}
+
+<h2>SearchByKeyWord</h2>
+<p>
+    @using(Html.BeginForm("SearchByKeyWord", "Question", FormMethod.Get))
+    { 
+        <b>Search By:</b>
+        @Html.RadioButton("searchBy", "KeyWords", true)<text>SearchBy</text>
+        @Html.TextBox("search") <input type="submit" value="Search" />
+    }
+</p>
+

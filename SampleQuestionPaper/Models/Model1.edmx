@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DOTNETModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Question_Table1">
+          <Key>
+            <PropertyRef Name="QuestionId" />
+          </Key>
+          <Property Name="QuestionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Question" Type="varchar(max)" Nullable="false" />
+          <Property Name="Keyword" Type="varchar(max)" Nullable="false" />
+          <Property Name="SubjectType" Type="int" Nullable="false" />
+          <Property Name="Option1" Type="varchar(max)" />
+          <Property Name="Option2" Type="varchar(max)" />
+          <Property Name="Option3" Type="varchar(max)" />
+          <Property Name="Option4" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Subject_Table">
+          <Key>
+            <PropertyRef Name="subject_Id" />
+          </Key>
+          <Property Name="subject_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Question_Table1_Subject_Table">
+          <End Role="Subject_Table" Type="Self.Subject_Table" Multiplicity="1" />
+          <End Role="Question_Table1" Type="Self.Question_Table1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject_Table">
+              <PropertyRef Name="subject_Id" />
+            </Principal>
+            <Dependent Role="Question_Table1">
+              <PropertyRef Name="SubjectType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DOTNETModelStoreContainer">
+          <EntitySet Name="Question_Table1" EntityType="Self.Question_Table1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subject_Table" EntityType="Self.Subject_Table" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Question_Table1_Subject_Table" Association="Self.FK_Question_Table1_Subject_Table">
+            <End Role="Subject_Table" EntitySet="Subject_Table" />
+            <End Role="Question_Table1" EntitySet="Question_Table1" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DOTNETModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Question_Table1">
+          <Key>
+            <PropertyRef Name="QuestionId" />
+          </Key>
+          <Property Name="QuestionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Keyword" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SubjectType" Type="Int32" Nullable="false" />
+          <Property Name="Option1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Option2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Option3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Option4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Subject_Table" Relationship="Self.FK_Question_Table1_Subject_Table" FromRole="Question_Table1" ToRole="Subject_Table" />
+        </EntityType>
+        <EntityType Name="Subject_Table">
+          <Key>
+            <PropertyRef Name="subject_Id" />
+          </Key>
+          <Property Name="subject_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Question_Table1" Relationship="Self.FK_Question_Table1_Subject_Table" FromRole="Subject_Table" ToRole="Question_Table1" />
+        </EntityType>
+        <Association Name="FK_Question_Table1_Subject_Table">
+          <End Role="Subject_Table" Type="Self.Subject_Table" Multiplicity="1" />
+          <End Role="Question_Table1" Type="Self.Question_Table1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject_Table">
+              <PropertyRef Name="subject_Id" />
+            </Principal>
+            <Dependent Role="Question_Table1">
+              <PropertyRef Name="SubjectType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DOTNETEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Question_Table1" EntityType="Self.Question_Table1" />
+          <EntitySet Name="Subject_Table" EntityType="Self.Subject_Table" />
+          <AssociationSet Name="FK_Question_Table1_Subject_Table" Association="Self.FK_Question_Table1_Subject_Table">
+            <End Role="Subject_Table" EntitySet="Subject_Table" />
+            <End Role="Question_Table1" EntitySet="Question_Table1" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DOTNETModelStoreContainer" CdmEntityContainer="DOTNETEntities">
+          <EntitySetMapping Name="Question_Table1">
+            <EntityTypeMapping TypeName="DOTNETModel.Question_Table1">
+              <MappingFragment StoreEntitySet="Question_Table1">
+                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="Keyword" ColumnName="Keyword" />
+                <ScalarProperty Name="SubjectType" ColumnName="SubjectType" />
+                <ScalarProperty Name="Option1" ColumnName="Option1" />
+                <ScalarProperty Name="Option2" ColumnName="Option2" />
+                <ScalarProperty Name="Option3" ColumnName="Option3" />
+                <ScalarProperty Name="Option4" ColumnName="Option4" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subject_Table">
+            <EntityTypeMapping TypeName="DOTNETModel.Subject_Table">
+              <MappingFragment StoreEntitySet="Subject_Table">
+                <ScalarProperty Name="subject_Id" ColumnName="subject_Id" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,43 @@
+﻿@model SampleQuestionPaper.Models.Question_Table1
+
+@{
+    ViewBag.Title = "Edit";
+    var data = ViewBag.SubjectType as List<SelectListItem>;
+}
+
+<h2 style="text-decoration: underline; text-align: center; color: mediumslateblue; text-transform: uppercase;">Edit Question</h2>
+<div class="container">
+    @using (Html.BeginForm("UpdateQuestion", "Question"))
+    {
+        <div class="row">
+            <label>Question ID: @Html.DisplayFor(m => m.QuestionId)@Html.HiddenFor(m => m.QuestionId)</label>
+            <label>Enter the Question</label><br />
+            @Html.EditorFor(m => m.Question)<br />
+            <label>Enter the Keyword of questions</label>
+            @Html.EditorFor(m => m.Keyword)<br />
+            <label>Enter the Subject Type</label>
+            @Html.DropDownListFor(m => m.SubjectType, data)<br />
+            <label>Option 1</label><br />
+            @Html.EditorFor(m => m.Option1)<br />
+            <label>Option 2</label><br />
+            @Html.EditorFor(m => m.Option2)<br />
+            <label>Option 3</label><br />
+            @Html.EditorFor(m => m.Option3)<br />
+            <label>Option 4</label><br />
+            @Html.EditorFor(m => m.Option4)<br />
+            <button class="btn btn-primary mt-3">Update Questions</button>
+        </div>
+    }
+</div>
+<style>
+    label {
+        font-weight: bold;
+        color: Highlight;
+    }
+    .btn-primary {
+        background-color: darkorchid;
+    }
+</style>
+
+
+

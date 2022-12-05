@@ -1,0 +1,35 @@
+﻿@model List<SampleQuestionPaper.Models.Question_Table1>
+
+@{
+    ViewBag.Title = "displayAllQuestion";
+}
+
+<div class="heading">
+    <h3 style="text-decoration:underline; text-align:center;color:indianred">Question Bank</h3>
+</div>
+
+<div class="container">
+    @foreach (var ques in Model)
+    {
+        <div class="row">
+            <hr />
+            <p>
+                <h4>@ques.QuestionId. @ques.Question ?</h4>
+                <h5>A. @ques.Option1  </h5>
+                <h5>B. @ques.Option2 </h5>
+                <h5>C. @ques.Option3 </h5>
+                <h5>D. @ques.Option4</h5>
+            </p>
+            @Html.ActionLink("Select Question", "Add", new { id = ques.QuestionId }, new { @class = "btn btn-outline-info" })
+            @Html.ActionLink("Edit Question", "Edit", new { id = ques.QuestionId }, new { @class = "btn btn-outline-warning" })
+            @Html.ActionLink("Delete Question", "Delete", new { id = ques.QuestionId }, new { @class = "btn btn-outline-danger" })
+            <hr />
+        </div>
+    }
+</div>
+<style>
+    a{
+        width:auto !important;
+    }
+</style>
+

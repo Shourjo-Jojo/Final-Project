@@ -1,0 +1,26 @@
+﻿@model MiniProjectApp.Models.BlogsTable
+
+@{
+    ViewBag.Title = "EditBlogs";
+}
+
+<h2 style="text-align:center;color:indianred">Edit Blogs</h2>
+<div class="container1">
+    @using (Html.BeginForm("UpdateBlogs", "Blogging"))
+    {
+       <div class="row1">
+           @Html.HiddenFor(m => m.UId)<br />
+           <label>Blog Id : @Html.DisplayFor(m => m.BlogId)@Html.HiddenFor(m => m.BlogId)</label>
+           <label>Title</label><br />
+           @Html.EditorFor(b => b.BlogTitle)<br />
+           <label>Image</label><br />
+           @Html.EditorFor(b => b.images)<br />
+           <label>Experience</label><br />
+           @Html.EditorFor(b => b.messages)<br />
+           <label>Rating</label><br />
+           @Html.EditorFor(b => b.ratings)<br />
+           <button class="btn btn-primary text-warning ms-4">Save Changes</button>
+       </div>
+    }
+</div>
+

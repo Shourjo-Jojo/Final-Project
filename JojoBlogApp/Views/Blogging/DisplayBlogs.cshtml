@@ -1,0 +1,31 @@
+﻿@model List<MiniProjectApp.Models.BlogsTable>
+
+@{
+    ViewBag.Title = "DisplayBlogs";
+    if (Session["UserData"]!=null)
+    {
+        ViewBag.Particular = (Session["UserData"] as MiniProjectApp.Models.UserTable).UserId;
+    }
+}
+<div class="dispBlogs">
+    <h3 style="text-align:center;color:indianred">Yours Blogs</h3>
+</div>
+<div class="contain">
+    @foreach (var blogs in Model)
+    {
+        if (blogs.UId == ViewBag.Particular)
+        {
+            <div class="rows">
+                <h4>Blog ID  @blogs.BlogId</h4>
+                <h4>Blog Title @blogs.BlogTitle</h4>
+                <img src="@blogs.images" />
+                <h4>@blogs.messages</h4>
+                <h4>Rating  @blogs.ratings</h4>
+                @Html.ActionLink("Edit Blog", "EditBlogs", new { id = blogs.BlogId }, new { @class = "btn btn-primary ms-3" })
+                @Html.ActionLink("Remove", "DeleteBlogs", new { id = blogs.BlogId }, new { @class = "btn btn-danger" })
+            </div>
+            
+        }
+    }
+</div>
+

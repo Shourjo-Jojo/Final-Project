@@ -1,0 +1,47 @@
+﻿@model MiniProjectApp.DataModels.LoginView
+
+@{
+    ViewBag.Title = "Login";
+}
+<div class="login">
+    <h2>Login</h2>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-15">
+            @using (Html.BeginForm())
+            {
+                <div style="color:red">
+                    @Html.ValidationSummary()
+                </div>
+                <label class="lb">Enter the UserName</label><br>
+                @Html.EditorFor(m => m.UserName)<br>
+                <p style="color:red">
+                    @Html.ValidationMessageFor(m => m.UserName)
+                </p>
+                <label>Enter Password</label><br>
+                @Html.EditorFor(m => m.password)<br />
+                <p style="color:red">
+                    @Html.ValidationMessageFor(m => m.password)
+                </p>
+                <button class="btn btn-danger mb-3">
+                    Login
+                </button>
+            }
+        </div>
+    </div>
+</div>
+
+
+<style>
+    input{
+        width:370px;
+    }
+    button{
+        margin-left: 15z0px;
+    }
+</style>
+
+
+
+

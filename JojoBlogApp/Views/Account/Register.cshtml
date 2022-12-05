@@ -1,0 +1,64 @@
+﻿@model MiniProjectApp.DataModels.UserDetailsVN
+
+@{
+    ViewBag.Title = "Register";
+}
+<div class="register">
+    <h2 style="text-align:center">Register Here</h2>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-15">
+            @using (Html.BeginForm())
+            {
+                <div style="color:red">
+                    @Html.ValidationSummary()
+                </div>
+                <label class="lb">Enter the Name</label><br>
+                @Html.EditorFor(m => m.Name)
+                <p style="color:red">
+                    @Html.ValidationMessageFor(m => m.Name)
+                </p>
+                <label>Enter the UserName</label><br>
+                @Html.EditorFor(m => m.UserName)
+                <p style="color:red">
+                    @Html.ValidationMessageFor(m => m.UserName)
+                </p>
+                <label>Enter your city</label><br>
+                @Html.EditorFor(m => m.Address)
+                <p style="color:red">
+                    @Html.ValidationMessageFor(m => m.Address)
+                </p>
+                <label>Enter the Mobile No</label><br>
+                @Html.EditorFor(m => m.mobileNo)
+                <p style="color:red">
+                    @Html.ValidationMessageFor(m => m.mobileNo)
+                </p>
+                <label>Enter the Email</label><br>
+                @Html.EditorFor(m => m.email)
+                <p style="color:red">
+                    @Html.ValidationMessageFor(m => m.email)
+                </p>
+                <label>Create Password</label><br>
+                @Html.EditorFor(m => m.password)
+                <p style="color:red">
+                    @Html.ValidationMessageFor(m => m.password)
+                </p>
+                <label>Retype the Password</label><br>
+                @Html.EditorFor(m => m.RetypePassword)
+                <p style="color:red">
+                    @Html.ValidationMessageFor(m => m.RetypePassword)
+                </p>
+                <button class="btn btn-success mb-4">
+                    Register Now
+                </button>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    input{
+        width: 370px;
+    }
+</style>

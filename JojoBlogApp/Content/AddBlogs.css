@@ -1,0 +1,17 @@
+﻿.container1
+{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+.row1{
+    width:400px;
+    background-color:antiquewhite;
+    margin:10px 10px 10px 10px;
+    padding:15px 15px 15px 120px;
+    border-radius:15px;
+}
+.btn
+{
+    margin-top:10px;
+}

@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@if (Request.IsAuthenticated)
+{
+    var data = new MiniProjectApp.Models.UserTable();
+    <h1>Welcome User: <span>@Html.Encode(User.Identity.Name)</span></h1>
+    @Html.ActionLink("Log out", "Logout", null, new { @class = "btn btn-danger" })
+}
+else
+{
+<div class="data">
+    <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+        <a class="navbar-brand">JoJo Project</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    @Html.ActionLink("Signup", "Register", null, new { @class = "btn btn-info ms-3" })
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("Login", "Login", null, new { @class = "btn btn-info ms-3" })
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+}

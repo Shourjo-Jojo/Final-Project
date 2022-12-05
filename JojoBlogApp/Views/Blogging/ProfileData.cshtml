@@ -1,0 +1,30 @@
+﻿@model MiniProjectApp.Models.BlogsTable
+
+@{
+    ViewBag.Title = "ProfileData";
+    if (Session["UserData"]!=null)
+    {
+        ViewBag.ID = (Session["UserData"] as MiniProjectApp.Models.UserTable).UserId;
+        ViewBag.Name = (Session["UserData"] as MiniProjectApp.Models.UserTable).Name;
+        ViewBag.Address= (Session["UserData"] as MiniProjectApp.Models.UserTable).Address;
+        ViewBag.Email = (Session["UserData"] as MiniProjectApp.Models.UserTable).email;
+    }
+}
+<h2 style="text-decoration:underline; text-align:center; color:chocolate;">Profile Data</h2>
+<div class="container">
+    <div class="row">
+        <h3>User Id : @ViewBag.ID</h3>
+        <h3>Name : @ViewBag.Name</h3>
+        <h3>Address : @ViewBag.Address</h3>
+        <h3>E-mail : @ViewBag.Email</h3>
+    </div>
+</div>
+<style>
+    .row{
+        background-color:gold;
+        border:double;
+        text-align:center     
+    }
+</style>
+
+

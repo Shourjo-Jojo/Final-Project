@@ -1,0 +1,27 @@
+USERTABLE
+
+CREATE TABLE [dbo].[UserTable] (
+    [UserId]   INT           NOT NULL,
+    [UserName] NVARCHAR (50) NOT NULL,
+    [Name]     NVARCHAR (50) NOT NULL,
+    [Address]  NVARCHAR (50) NOT NULL,
+    [mobileNo] BIGINT        NOT NULL,
+    [email]    NVARCHAR (50) NOT NULL,
+    [password] NVARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([UserId] ASC)
+);
+
+
+BLOGSTABLE
+CREATE TABLE [dbo].[BlogsTable] (
+    [BlogId]     INT            NOT NULL,
+    [BlogTitle]  NVARCHAR (MAX) NOT NULL,
+    [images]     NVARCHAR (MAX) NOT NULL,
+    [messages]   NVARCHAR (MAX) NOT NULL,
+    [UId]        INT            NOT NULL,
+    [ratings]    INT            NOT NULL,
+    [TravelDate] NVARCHAR (50)  NOT NULL,
+    PRIMARY KEY CLUSTERED ([BlogId] ASC),
+    CONSTRAINT [FK_BlogsTable_UserTable] FOREIGN KEY ([UId]) REFERENCES [dbo].[UserTable] ([UserId])
+);
+
